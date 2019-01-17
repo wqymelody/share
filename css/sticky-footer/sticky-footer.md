@@ -36,3 +36,53 @@
 </html>
 ```
 #### 方法2 ：就是把html，body高度设为100%，wrapper部分设置成min-height：100%；然后给wrapper下的内容设置padding-bottom：footer的高度； 最后给footer设置margin-top：-footer的高度，相当于把footer往上拉了和footer一样的高度，详细示例请看demo2.html
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>sticky-footer-demo2</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    html,body{
+      height: 100%;
+    }
+    body > .wrapper {
+      min-height: 100%;
+    }
+    .content {
+      padding-bottom: 90px;/*必须与footer的高度保持一致*/
+      background: green;
+    }
+    .footer {
+      position: relative;
+      margin-top: -90px; /*相当于把footer向上拉了90px*/
+      height: 90px;
+      background: pink;
+      }
+      .clearfix {
+        *zoom: 1;
+      }
+      .clearfix::after {
+        content: '';
+        display: block;
+        height: 0;
+        line-height: 0;
+        visibility: hidden;
+        clear: both;
+      }
+  </style>
+</head>
+<body>
+  <div class="wrapper clearfix">
+    <div class="content">我是内容</div>
+  </div>
+  <div class="footer">我是底部</div>
+</body>
+</html>
+```
